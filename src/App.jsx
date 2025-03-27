@@ -5,7 +5,7 @@ function App() {
   return (
     <>
       <button>
-        Hola Mundo
+        Hola Mundo 2.0
       </button>
     </>
   )
