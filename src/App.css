@@ -1,1 +1,11 @@
 @import "tailwindcss";
+:root{
+  --color-light-brown: #ae6c56;
+  --color-light-brown-2: #ba7553;
+  --color-dark-brown:  #512923;
+  --color-white:  #ededed;
+  --color-dark-grey:  #232323;
+}
+body {
+  background-color: var(--light-brown);
+}
