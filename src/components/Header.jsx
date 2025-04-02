@@ -12,8 +12,7 @@ export function Header() {
     slide3,
     slide4
   ];
-  // ...existing code...
-}
+  
   const handlePrev = () => {
     setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
   };
