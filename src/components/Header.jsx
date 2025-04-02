@@ -3,10 +3,10 @@ import { useState, useEffect } from "react";
 export function Header() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const slides = [
-    "/src/assets/slide-image-1.jpg",
-    "/src/assets/slide-image-2.jpg",
-    "/src/assets/slide-image-3.jpg",
-    "/src/assets/slide-image-4.jpg",
+    "/assets/slide-image-1.jpg",
+    "/assets/slide-image-2.jpg",
+    "/assets/slide-image-3.jpg",
+    "/assets/slide-image-4.jpg",
   ];
 
   const handlePrev = () => {
