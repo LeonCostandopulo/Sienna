@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
-import slide1 from '../assets/slider/slide-image-1.jpg'
-import slide2 from '../assets/slider/slide-image-2.jpg'
-import slide3 from '../assets/slider/slide-image-3.jpg'
-import slide4 from '../assets/slider/slide-image-4.jpg'
+import slide2 from '../assets/slide-image-2.jpg'
+import slide1 from '../assets/slide-image-1.jpg'
+import slide3 from '../assets/slide-image-3.jpg'
+import slide4 from '../assets/slide-image-4.jpg'
 
 export function Header() {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -12,7 +12,7 @@ export function Header() {
     slide3,
     slide4
   ];
-  
+
   const handlePrev = () => {
     setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
   };
