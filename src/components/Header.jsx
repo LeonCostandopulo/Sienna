@@ -39,7 +39,7 @@ export function Header() {
           >
             <img
               src={slide}
-              className="absolute block w-full object-contain h-full"
+              className="absolute block w-full object-cover object-center inset-0 h-full lg:object-contain"
               alt={`Slide ${index + 1}`}
             />
           </div>
@@ -64,7 +64,7 @@ export function Header() {
       {/* Slider controls */}
       <button
         type="button"
-        className="absolute top-[30%] left-0 z-30 flex items-center justify-center h-[40%] px-4 cursor-pointer group focus:outline-none"
+        className="absolute lg:hidden top-[30%] left-0 z-30 flex items-center justify-center h-[40%] px-4 cursor-pointer group focus:outline-none"
         onClick={handlePrev}
       >
         <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 group-hover:bg-white/50 group-focus:ring-2 group-focus:ring-[var(--color-white)]">

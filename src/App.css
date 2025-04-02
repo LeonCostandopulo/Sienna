@@ -1,21 +1,34 @@
 @import "tailwindcss";
 :root{
-  --color-light-brown: #a66b55;
+  --color-light-brown: #a66b55ce;
+
+  --color-dark-brown:  #522820;
   --color-light-brown-2: #b67557;
-  --color-dark-brown:  #471c13;
-  --color-white:  #fdfffcde;
+
+  /* --color-white:  #fdfffcde; */
+  --color-smooth-white:  #d4c8c1de;
   --color-dark-grey:  #232323;
-  --color-fondo:  var(--color-dark-grey);
+
   --color-texto: var(--color-white);
+
+  --color-fondo:  var(--color-smooth-white);
+  --color-elementos: var(--color-light-brown);
+  --color-elementos-2: var(--color-dark-brown);
+
 }
 body {
-  background-color: var(--color-light-brown);
+  background-color: var(--color-fondo);
   color: var(--color-white);
   
 }
 .filter-shadow{
-  filter: drop-shadow(0 0 7px #000 );
+  filter: drop-shadow(0 0 7px #0007 );
 }
 .wsp{
   color: #a66b55;
+}
+
+/** PRUEBAS **/
+.category{
+  filter: drop-shadow(0 0 7px #0007 );
 }

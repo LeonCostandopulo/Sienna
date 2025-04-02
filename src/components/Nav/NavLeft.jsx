@@ -3,10 +3,10 @@
 
 export function NavLeft() {
   return (
-    <ul className="nav-left opacity-0 hover:opacity-100  absolute bg-[var(--color-light-brown)] top-0 flex-col gap-2 font-bold py-[5rem] px-[3.35rem] ">
-      <li className="nav-left-items">item 1</li>
-      <li className="nav-left-items">item 2</li>
-      <li className="nav-left-items">item 3</li>
+    <ul id="nav-left" className="nav-left a flex-col hidden lg:flex opacity-0 hover:opacity-100 absolute bg-[var(--color-light-brown)] top-0 gap-5 font-bold h-dvh justify-center w-2xs p-5 transition-opacity duration-300 ease-in-out">
+      <li className="nav-left-items">Formas de pago</li>
+      <li className="nav-left-items">Redes</li>
+      <li className="nav-left-items">Locales</li>
     </ul>
   )
 }
