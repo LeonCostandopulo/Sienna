@@ -1,3 +1,9 @@
+import remera1   from '../../assets/products/remera-1.jpg'
+import remera2   from '../../assets/products/remera-2.jpg'
+import pantalon3 from '../../assets/products/pantalon-3.jpg'
+import pantalon4 from '../../assets/products/pantalon-4.jpg'
+import buzo5     from '../../assets/products/buzo-5.jpg'
+import buzo6     from '../../assets/products/buzo-6.jpg'
 
 export function ProductsSection() {
   const products = [ // id:number , name:string , price:number , imageUrl:string , description:string , type:string
@@ -5,7 +11,7 @@ export function ProductsSection() {
       id: 1,
       name: 'Remera 1',
       price: 100,
-      imageUrl: '/assets/products/remera-1.jpg',
+      imageUrl: remera1,
       description: 'Descripción del producto 1',
       type: 'remera',
     },
@@ -13,7 +19,7 @@ export function ProductsSection() {
       id: 2,
       name: 'Remera 2',
       price: 200,
-      imageUrl: '/assets/products/remera-2.jpg',
+      imageUrl: remera2,
       description: 'Descripción del producto 2',
       type: 'remera',
     },
@@ -21,7 +27,7 @@ export function ProductsSection() {
       id: 3,
       name: 'Pantalon 3',
       price: 300,
-      imageUrl: '/assets/products/pantalon-3.jpg',
+      imageUrl: pantalon3,
       description: 'Descripción del producto 3',
       type: 'pantalon',
     },
@@ -29,7 +35,7 @@ export function ProductsSection() {
       id: 4,
       name: 'Pantalon 4',
       price: 100,
-      imageUrl: '/assets/products/pantalon-4.jpg',
+      imageUrl: pantalon4,
       description: 'Descripción del producto 4',
       type: 'pantalon',
     },
@@ -37,7 +43,7 @@ export function ProductsSection() {
       id: 5,
       name: 'Buzo 5',
       price: 200,
-      imageUrl: '/assets/products/buzo-5.jpg',
+      imageUrl: buzo5,
       description: 'Descripción del producto 5',
       type: 'buzo',
     },
@@ -45,11 +51,12 @@ export function ProductsSection() {
       id: 6,
       name: 'Buzo 6',
       price: 300,
-      imageUrl: '/assets/products/buzo-6.jpg',
+      imageUrl: buzo6,
       description: 'Descripción del producto 6',
       type: 'buzo',
     },
   ]
+
 
   return (
     <section className='section-products m-2'> 
