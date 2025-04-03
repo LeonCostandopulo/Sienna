@@ -1,5 +1,5 @@
 //##
-import { useCart } from '../CartProvider'//#
+import { useCart } from '../ProductsSection/useCart'//#
 import { useState } from 'react'
 import { CartDetail } from './CartDetail'
 

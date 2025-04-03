@@ -1,4 +1,4 @@
-import { useCart } from '../CartProvider'//#
+import { useCart } from '../ProductsSection/useCart'//#
 
 export function CartDetail({ onClose }) {
   const { cart, removeFromCart, getCartTotal } = useCart()

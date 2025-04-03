@@ -2,6 +2,7 @@
 export function WhatsAppButton() {
   const numero = 5491130082379
   const mensaje = 'Hola! Vengo de la página web de Sienna. Quería más información.'
+  
   return (
     <article className='floating-whatsapp fixed bottom-2 right-2 xl:right-[7dvw] xl:bottom-5 z-50 aspect-square w-16 bg-gray-50 rounded-xl p-0'>
       <a href={`https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`} target="_blank" className="bg-[var(--color-elementos)] m-0 w-full h-full p-1 rounded-xl flex items-center justify-center">

@@ -3,6 +3,9 @@ import { ProductDetail } from './ProductDetail'
 import { products } from '../../constantes.js'
 
 export function ProductsSection() {
+  const numero = 5491130082379
+  const mensaje = 'Hola! Vengo de la página web de Sienna. Quiero comprar: \n'
+  
   const [selectedProduct, setSelectedProduct] = useState(null)
 
   const handleProductClick = (product) => {
@@ -50,11 +53,11 @@ export function ProductsSection() {
                 {product.description}
               </p>
               <div className="flex items-center">
-                <button className="inline-flex items-center ml-auto px-3 py-2 text-sm font-medium text-center text-white bg-[var(--color-elementos-2)] border-2 border-[var(--color-elementos-2)] rounded-lg hover:opacity-60 focus:outline-none">
+                <a onClick={(e)=> e.stopPropagation()} href={`https://wa.me/${numero}?text=${encodeURIComponent(`${mensaje}"${product.name}".`)}`} className="inline-flex items-center ml-auto px-3 py-2 text-sm font-medium text-center text-white bg-[var(--color-elementos-2)] border-2 border-[var(--color-elementos-2)] rounded-lg hover:opacity-60 focus:outline-none">
                   Comprar
-                </button>
-                <button className="inline-flex items-center ml-auto px-3 py-2 text-sm font-medium text-center text-[var(--color-elementos-2)] border-2 rounded-lg hover:opacity-60 focus:outline-none">
-                  Añadir al carrito
+                </a>
+                <button className="inline-flex cursor-pointer items-center ml-auto px-3 py-2 text-sm font-medium text-center text-[var(--color-elementos-2)] border-2 rounded-lg hover:opacity-60 focus:outline-none">
+                  Elegir
                 </button>
               </div>
             </div>
