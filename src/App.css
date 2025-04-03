@@ -9,17 +9,30 @@
   --color-smooth-white:  #d4c8c1de;
   --color-dark-grey:  #232323;
 
+
+  
   --color-texto: var(--color-white);
+  --color-texto-2: #ffffffaf;
 
   --color-fondo:  var(--color-smooth-white);
   --color-elementos: var(--color-light-brown);
   --color-elementos-2: var(--color-dark-brown);
 
+
+
+
+  --color-elementos-3: var(--color-light-brown);
+
+  --color-elementos-4: #a86c57;
+  --color-elementos-5: #e9d5cd;
+
+}
+*{
+  user-select: none;
 }
 body {
   background-color: var(--color-fondo);
   color: var(--color-white);
-  
 }
 .filter-shadow{
   filter: drop-shadow(0 0 7px #0007 );

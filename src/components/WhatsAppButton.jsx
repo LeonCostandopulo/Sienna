@@ -2,8 +2,8 @@
 export function WhatsAppButton() {
   
   return (
-    <article className='floating-whatsapp fixed bottom-2 right-2 xl:right-[7dvw] xl:bottom-5 z-50 aspect-square w-16 bg-[var(--color-elementos)] rounded-xl p-2'>
-      <a href="#">
+    <article className='floating-whatsapp fixed bottom-2 right-2 xl:right-[7dvw] xl:bottom-5 z-50 aspect-square w-16 bg-gray-50 rounded-xl p-0'>
+      <a href={`https://api.whatsapp.com/send?phone=5491130082379?text=${encodeURIComponent('Hola!')}`} target="_blank" className="bg-[var(--color-elementos)] m-0 w-full h-full p-1 rounded-xl flex items-center justify-center">
         <svg 
         fill="var(--color-texto)" 
         height="50px" 
