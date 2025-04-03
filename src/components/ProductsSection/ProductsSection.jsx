@@ -52,11 +52,11 @@ export function ProductsSection() {
               <p className="mb-3 font-normal text-[var(--color-texto-2)]">
                 {product.description}
               </p>
-              <div className="flex items-center">
+              <div className="flex items-center gap-2">
                 <a onClick={(e)=> e.stopPropagation()} href={`https://wa.me/${numero}?text=${encodeURIComponent(`${mensaje}"${product.name}".`)}`} className="inline-flex items-center ml-auto px-3 py-2 text-sm font-medium text-center text-white bg-[var(--color-elementos-2)] border-2 border-[var(--color-elementos-2)] rounded-lg hover:opacity-60 focus:outline-none">
                   Comprar
                 </a>
-                <button className="inline-flex cursor-pointer items-center ml-auto px-3 py-2 text-sm font-medium text-center text-[var(--color-elementos-2)] border-2 rounded-lg hover:opacity-60 focus:outline-none">
+                <button className="inline-flex cursor-pointer items-center px-3 py-2 text-sm font-medium text-center text-[var(--color-elementos-2)] border-2 rounded-lg hover:opacity-60 focus:outline-none">
                   Elegir
                 </button>
               </div>
