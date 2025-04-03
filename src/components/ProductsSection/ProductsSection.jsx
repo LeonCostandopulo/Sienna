@@ -49,9 +49,14 @@ export function ProductsSection() {
               <p className="mb-3 font-normal text-[var(--color-texto-2)]">
                 {product.description}
               </p>
-              <button className="inline-flex items-center ml-auto px-3 py-2 text-sm font-medium text-center text-white bg-[var(--color-elementos-2)] rounded-lg hover:opacity-60 focus:outline-none">
-                Añadir al carrito
-              </button>
+              <div className="flex items-center">
+                <button className="inline-flex items-center ml-auto px-3 py-2 text-sm font-medium text-center text-white bg-[var(--color-elementos-2)] border-2 border-[var(--color-elementos-2)] rounded-lg hover:opacity-60 focus:outline-none">
+                  Comprar
+                </button>
+                <button className="inline-flex items-center ml-auto px-3 py-2 text-sm font-medium text-center text-[var(--color-elementos-2)] border-2 rounded-lg hover:opacity-60 focus:outline-none">
+                  Añadir al carrito
+                </button>
+              </div>
             </div>
           </div>
         ))}

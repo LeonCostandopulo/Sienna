@@ -41,6 +41,9 @@ body {
   color: #a66b55;
 }
 
+#Capa_1{
+  filter: drop-shadow(0 0 7px #0007 );
+}
 /** PRUEBAS **/
 .category{
   filter: drop-shadow(0 0 7px #0007 );

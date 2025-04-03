@@ -1,10 +1,17 @@
 import { useState } from 'react'
 import { ColorPicker } from './ColorPicker'
 import { SizePicker } from './SizePicker'
+import { useCart } from '../CartProvider'//#
 
 export function ProductDetail({ product, onClose }) {
+  const { addToCart } = useCart() //#
   const [selectedColor, setSelectedColor] = useState(product.color?.[0] || null)
   const [selectedSize, setSelectedSize] = useState(product.size?.[0] || null)
+
+  const handleAddToCart = () => { //#
+    addToCart(product, 1, selectedColor, selectedSize)
+    onClose()
+  }
 
   return (
     <div 
@@ -13,7 +20,7 @@ export function ProductDetail({ product, onClose }) {
       onClick={onClose}
     >
       <article 
-        className="bg-[var(--color-elementos)] rounded-lg max-w-4xl w-full mx-4 overflow-hidden"
+        className="bg-[var(--color-elementos)] relative rounded-lg max-w-4xl w-full mx-4 overflow-hidden"
         style={{ zIndex: 101 }}
         onClick={e => e.stopPropagation()}
       >
@@ -65,20 +72,24 @@ export function ProductDetail({ product, onClose }) {
             <p className="text-2xl font-bold mt-4">${product.price}</p>
             
             <div className="mt-auto flex gap-4 pt-6">
+              <button className="inline-flex items-center ml-auto px-3 py-2 text-sm font-medium text-center text-white bg-[var(--color-elementos-2)] border-2 border-[var(--color-elementos-2)] rounded-lg hover:opacity-60 focus:outline-none">
+                Comprar
+              </button>
               <button 
+                onClick={handleAddToCart} //#
                 disabled={
                   (product.color?.length > 0 && !selectedColor) || 
                   (product.size?.length > 0 && !selectedSize)
                 }
-                className="bg-[var(--color-elementos-2)] text-white px-6 py-2 rounded-lg hover:opacity-80 disabled:opacity-50 disabled:cursor-not-allowed"
-              >
+                className="inline-flex items-center ml-auto px-3 py-2 text-sm font-medium text-center text-[var(--color-elementos-2)] border-2 rounded-lg hover:opacity-60 focus:outline-none"
+                >
                 Añadir al carrito
               </button>
               <button 
                 onClick={onClose}
-                className="px-6 py-2 rounded-lg border border-current hover:opacity-60"
+                className="px-6 py-2 rounded-lg hover:opacity-60 absolute top-0 right-0"
               >
-                Cerrar
+                ✕
               </button>
             </div>
           </div>
