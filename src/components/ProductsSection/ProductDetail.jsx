@@ -27,19 +27,18 @@ export function ProductDetail({ product, onClose }) {
         style={{ zIndex: 101 }}
         onClick={e => e.stopPropagation()}
       >
-        <div className="flex gap-1 flex-col md:flex-row overflow-hidden">
+        <div className="flex gap-1 flex-col md:flex-row h-full items-center  overflow-hidden">
           <img 
             src={product.imageUrl} 
             alt={product.name}
-            className=" rounded-t-lg max-h-[40dvh] w-full md:w-1/2 object-none "
+            className=" rounded-t-lg max-h-[40dvh] w-full md:w-1/2 object-none"
           />
 
-          <div className="flex flex-col ">
+          <div className="flex flex-col md:gap-4">
             <h2 className="text-3xl font-bold text-center">{product.name}</h2>
             <p className="text-2xl font-bold text-center ">${product.price}</p>
-          </div>
 
-          <div className="flex gap-10 flex-1 px-10">
+          <div className="flex flex-1 px-10 md:flex-col">
             <p className="hidden md:block text-[var(--color-texto-2)] mb-4">{product.description}</p>
             
             <div className='flex flex-col gap-[1dvh]'>
@@ -70,7 +69,7 @@ export function ProductDetail({ product, onClose }) {
                     onColorSelect={setSelectedColor}
                   />
                   {selectedColor && (
-                    <p className="hidden text-sm text-[var(--color-texto-2)] mt-1">
+                    <p className="hidden md:block text-sm text-[var(--color-texto-2)] mt-1">
                       Color seleccionado: {selectedColor}
                     </p>
                   )}
@@ -98,6 +97,7 @@ export function ProductDetail({ product, onClose }) {
                 >
                 Añadir al carrito
               </button>
+          </div>
               
             </div>
           </div>
