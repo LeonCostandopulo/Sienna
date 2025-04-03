@@ -53,7 +53,7 @@ export function NavList() {
         </a>
       </li>
 
-      <div className="right flex items-center gap-4 md:gap-10 ml-auto mr-0 md:mr-15">
+      <div className="flex items-center gap-4 md:gap-10 ml-auto mr-2 md:mr-15">
         <li className="nav-search filter-shadow">
         <svg 
         width="24px" 

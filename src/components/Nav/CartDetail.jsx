@@ -2,6 +2,16 @@ import { useCart } from '../ProductsSection/useCart'//#
 
 export function CartDetail({ onClose }) {
   const { cart, removeFromCart, getCartTotal } = useCart()
+  const numero = 5491130082379
+  const mensaje = 'Hola! Vengo de la página web de Sienna. Quiero comprar: \n'
+  
+  const getWhatsAppMessage = () => {
+    const itemsList = cart.map(item => 
+      `- ${item.name} (Color: ${item.color}, Talla: ${item.size}, Cantidad: ${item.quantity})`
+    ).join('\n')
+    
+    return `${mensaje}${itemsList}\n\nTotal: $${getCartTotal()}`
+  }
 
   return (
     <div 
@@ -70,9 +80,12 @@ export function CartDetail({ onClose }) {
                   <span>Total:</span>
                   <span>${getCartTotal()}</span>
                 </div>
-                <button className="w-full bg-[var(--color-elementos-2)] text-white py-3 rounded-lg hover:opacity-80">
+                <a 
+                  href={`https://wa.me/${numero}?text=${encodeURIComponent(getWhatsAppMessage())}`}
+                  className="w-full bg-[var(--color-elementos-2)] text-white py-3 rounded-lg hover:opacity-80 text-center"
+                >
                   Finalizar compra
-                </button>
+                </a>
               </div>
             </>
           )}
