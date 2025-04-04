@@ -1,8 +1,22 @@
 import { useState } from 'react'
 import { ProductDetail } from './ProductDetail'
 import { products } from '../../constantes.js'
+import { useFilter } from '../../context/useFilter'
+import { useMemo } from 'react'
 
 export function ProductsSection() {
+  const { activeFilter } = useFilter()
+  
+  const filteredProducts = useMemo(() => {
+      if (!activeFilter) return products
+
+      return [...products].sort((a, b) => {
+        const aMatch = a.type.includes(activeFilter)
+        const bMatch = b.type.includes(activeFilter)
+        return bMatch - aMatch
+    })
+  }, [activeFilter])
+  
   const numero = 5491130082379
   const mensaje = 'Hola! Vengo de la página web de Sienna. Quiero comprar: \n'
   
@@ -24,7 +38,7 @@ export function ProductsSection() {
       <h2 className="mx-auto text-3xl font-bold filter-shadow text-center mt-3 mb-2">Productos</h2>
       <div className="products grid [grid-template-columns:repeat(auto-fill,minmax(200px,1fr))] [grid-auto-rows:minmax(200px,auto)] gap-[.7rem] max-w-[1024px] mx-auto md:grid-cols-3">
         
-        {products.map((product) => (
+        {filteredProducts.map((product) => (
           <div 
             key={product.id} 
             className="max-w-sm filter-shadow bg-[var(--color-elementos)] rounded shadow-sm cursor-pointer"

@@ -8,30 +8,33 @@ import { CategoriesSection } from './components/CategoriesSection/CategoriesSect
 import { ProductsSection } from './components/ProductsSection/ProductsSection'
 import { Header } from './components/Header'
 import { CartProvider } from './components/CartProvider'
+import { FilterProvider } from './context/FilterProvider'
 
 function App() {
   return (
     <>
-    <CartProvider>
-      <nav className='nav sticky top-0 z-100 bg-[var(--color-fondo)]'> {/*Nav transparente para que se vea el layout del principio, pero cuando bajamos le damos cuerpo. Filtros al costado (hombre/mujer/unisex, tallas disponibles, oversize fit o no sé qué, etc) */} 
-        <NavList />
-      </nav>
+    <FilterProvider>
+      <CartProvider>
+        <nav className='nav sticky top-0 z-100 bg-[var(--color-fondo)]'> {/*Nav transparente para que se vea el layout del principio, pero cuando bajamos le damos cuerpo. Filtros al costado (hombre/mujer/unisex, tallas disponibles, oversize fit o no sé qué, etc) */} 
+          <NavList />
+        </nav>
 
-      <Header />
+        <Header />
 
-      <main className='main'> 
-        <CategoriesSection />
+        <main className='main'> 
+          <CategoriesSection />
 
-        <ProductsSection />
+          <ProductsSection />
 
-        <WhatsAppButton />
-      </main>
+          <WhatsAppButton />
+        </main>
 
-      <footer className='footer flex justify-center items-center h-50 bg-gray-900 gap-1 text-white'>
-        Developed by 
-        <span className='font-bold'>León Costandopulo</span>
-      </footer>
-    </CartProvider>
+        <footer className='footer flex justify-center items-center h-50 bg-gray-900 gap-1 text-white'>
+          Developed by 
+          <span className='font-bold'>León Costandopulo</span>
+        </footer>
+      </CartProvider>
+    </FilterProvider>
     </>
   )
 }
