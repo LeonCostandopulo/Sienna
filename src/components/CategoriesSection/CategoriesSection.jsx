@@ -12,7 +12,8 @@ export function CategoriesSection() {
 
   return (
     <section className="categories my-[2rem] flex flex-col max-w-[1024px] mx-auto md:flex-row justify-center items-center gap-4  text-[var(--color-texto)] ">
-      <div 
+      <a 
+        href="#products-section"
         style={{
           transform: activeFilter === 'remera' ? 'scale(1.1)' : 'none',
           border: activeFilter === 'remera' ? '2px solid var(--color-elementos-2)' : 'none',
@@ -21,9 +22,10 @@ export function CategoriesSection() {
         onClick={()=>handleFilterClick("remera")} 
         className={`w-full cursor-pointer transition-all`}>
         <CategoriesCard text={"Remeras"} img={remeraEjemplo}/>
-      </div>
+      </a>
 
-      <div 
+      <a 
+        href="#products-section"
         style={{
           transform: activeFilter === 'pantalon' ? 'scale(1.1)' : 'none',
           border: activeFilter === 'pantalon' ? '2px solid var(--color-elementos-2)' : 'none',
@@ -32,7 +34,7 @@ export function CategoriesSection() {
         onClick={()=>handleFilterClick("pantalon")} 
         className={`w-full cursor-pointer transition-all`}>
         <CategoriesCard text={"Pantalones"} img={pantalonEjemplo}/>
-      </div>
+      </a>
     </section>
   )
 }

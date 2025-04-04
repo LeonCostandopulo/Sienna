@@ -36,7 +36,7 @@ export function ProductsSection() {
   return (
     <section className='section-products m-2'> 
       <h2 className="mx-auto text-3xl font-bold filter-shadow text-center mt-3 mb-2">Productos</h2>
-      <div className="products grid [grid-template-columns:repeat(auto-fill,minmax(200px,1fr))] [grid-auto-rows:minmax(200px,auto)] gap-[.7rem] max-w-[1024px] mx-auto md:grid-cols-3">
+      <div id='products-section' className="products grid [grid-template-columns:repeat(auto-fill,minmax(200px,1fr))] [grid-auto-rows:minmax(200px,auto)] gap-[.7rem] max-w-[1024px] mx-auto md:grid-cols-3">
         
         {filteredProducts.map((product) => (
           <div 
