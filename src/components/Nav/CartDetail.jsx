@@ -15,7 +15,7 @@ export function CartDetail({ onClose }) {
 
   return (
     <div 
-      className="fixed inset-0 bg-black/50 flex justify-end z-50 "
+      className="fixed cursor-default inset-0 bg-black/50 flex justify-end z-50 "
       onClick={onClose}
     >
       <div 
@@ -67,7 +67,7 @@ export function CartDetail({ onClose }) {
                     </div>
                     <button
                       onClick={() => removeFromCart(item.id, item.color, item.size)}
-                      className="self-start p-1 hover:opacity-60"
+                      className="self-start cursor-pointer p-1 hover:opacity-60"
                     >
                       <svg 
                       width="24px" 

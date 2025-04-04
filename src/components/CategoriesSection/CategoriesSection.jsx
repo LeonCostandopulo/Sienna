@@ -15,24 +15,24 @@ export function CategoriesSection() {
       <a 
         href="#products-section"
         style={{
-          transform: activeFilter === 'remera' ? 'scale(1.1)' : 'none',
-          border: activeFilter === 'remera' ? '2px solid var(--color-elementos-2)' : 'none',
+          transform: activeFilter === 'remera' ? 'scale(1.05)' : 'none',
+          border: activeFilter === 'remera' ? '1px solid var(--color-elementos-2)' : 'none',
           zIndex: activeFilter === 'remera' ? '10' : '0'
         }}
         onClick={()=>handleFilterClick("remera")} 
-        className={`w-full cursor-pointer transition-all `}>
+        className={`w-full rounded-lg cursor-pointer transition-all `}>
         <CategoriesCard text={"Remeras"} img={remeraEjemplo}/>
       </a>
 
       <a 
         href="#products-section"
         style={{
-          transform: activeFilter === 'pantalon' ? 'scale(1.1)' : 'none',
-          border: activeFilter === 'pantalon' ? '2px solid var(--color-elementos-2)' : 'none',
+          transform: activeFilter === 'pantalon' ? 'scale(1.05)' : 'none',
+          border: activeFilter === 'pantalon' ? '1px solid var(--color-elementos-2)' : 'none',
           zIndex: activeFilter === 'pantalon' ? '10' : '0'
         }}
         onClick={()=>handleFilterClick("pantalon")} 
-        className={`w-full cursor-pointer transition-all`}>
+        className={`w-full rounded-lg cursor-pointer transition-all`}>
         <CategoriesCard text={"Pantalones"} img={pantalonEjemplo}/>
       </a>
     </section>

@@ -8,20 +8,25 @@ export function NavList() {
 
   useEffect(() => {
     if (isMenuOpen) {
-      // Add history entry when menu opens
       window.history.pushState({ menu: 'nav' }, '')
-    }
 
-    // Handle back button
-    const handlePopState = () => {
-      setIsMenuOpen(false)
-    }
+      // Add click listener to handle clicks outside NavLeft
+      const handleClickOutside = (e) => {
+        const navLeft = document.getElementById('nav-left')
+        if (navLeft && !navLeft.contains(e.target) && !e.target.closest('.nav-left-button')) {
+          setIsMenuOpen(false)
+        }
+      }
 
-    window.addEventListener('popstate', handlePopState)
-    return () => window.removeEventListener('popstate', handlePopState)
+      document.addEventListener('click', handleClickOutside)
+      return () => {
+        document.removeEventListener('click', handleClickOutside)
+      }
+    }
   }, [isMenuOpen])
 
-  function handleClick() {
+  function handleClick(e) {
+    e.stopPropagation() // Prevent click from bubbling
     setIsMenuOpen(!isMenuOpen)
   }
 
