@@ -19,7 +19,7 @@ export function CartDetail({ onClose }) {
       onClick={onClose}
     >
       <div 
-        className="bg-[var(--color-elementos)] w-full max-w-md h-full overflow-auto"
+        className="bg-[var(--color-elementos)] w-full max-w-md h-screen overflow-auto"
         onClick={e => e.stopPropagation()}
       >
         <div className="p-4 flex flex-col h-full">
@@ -33,8 +33,8 @@ export function CartDetail({ onClose }) {
             </button>
           </div>
 
-          {cart.length === 0 ? (
-            <p className="text-center my-8 text-[var(--color-texto-2)]">
+          {cart.length === 0 ? ( 
+            <p className="text-center my-auto text-[var(--color-texto-2)]">
               El carrito está vacío
             </p>
           ) : (
