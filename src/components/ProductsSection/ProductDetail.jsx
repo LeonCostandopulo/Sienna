@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { ColorPicker } from './ColorPicker'
 import { SizePicker } from './SizePicker'
 import { useCart } from '../ProductsSection/useCart'//#
@@ -16,6 +16,17 @@ export function ProductDetail({ product, onClose }) {
     onClose()
   }
 
+  useEffect(() => {
+    const closeButton = document.querySelector('.close-button')
+    
+    const handleBackButton = () => {
+      closeButton?.click()
+    }
+
+    window.addEventListener('popstate', handleBackButton)
+    return () => window.removeEventListener('popstate', handleBackButton)
+  }, [])
+  
   return (
     <div 
       className="fixed inset-0 bg-black/50 flex items-center justify-center"
@@ -79,7 +90,7 @@ export function ProductDetail({ product, onClose }) {
 
             <button 
                 onClick={onClose}
-                className="px-6 py-2 rounded-lg hover:opacity-60 absolute top-0 right-[-.5rem]"
+                className="close-button px-6 py-2 rounded-lg hover:opacity-60 absolute top-0 right-[-.5rem]"
               >
                 ✕
               </button>
