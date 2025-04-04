@@ -20,7 +20,7 @@ export function CategoriesSection() {
           zIndex: activeFilter === 'remera' ? '10' : '0'
         }}
         onClick={()=>handleFilterClick("remera")} 
-        className={`w-full cursor-pointer transition-all`}>
+        className={`w-full cursor-pointer transition-all `}>
         <CategoriesCard text={"Remeras"} img={remeraEjemplo}/>
       </a>
 

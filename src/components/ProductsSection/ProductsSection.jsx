@@ -36,17 +36,17 @@ export function ProductsSection() {
   return (
     <section className='section-products m-2'> 
       <h2 className="mx-auto text-3xl font-bold filter-shadow text-center mt-3 mb-2">Productos</h2>
-      <div id='products-section' className="products grid [grid-template-columns:repeat(auto-fill,minmax(200px,1fr))] [grid-auto-rows:minmax(200px,auto)] gap-[.7rem] max-w-[1024px] mx-auto md:grid-cols-3">
+      <div id='products-section' className="products justify-center grid [grid-template-columns:repeat(auto-fill,minmax(200px,1fr))] [grid-auto-rows:minmax(200px,auto)] gap-[.7rem] max-w-[1024px] mx-auto md:grid-cols-3">
         
         {filteredProducts.map((product) => (
           <div 
             key={product.id} 
-            className="max-w-sm filter-shadow bg-[var(--color-elementos)] rounded shadow-sm cursor-pointer"
+            className="max-w-[410px] filter-shadow bg-[var(--color-elementos)] rounded shadow-sm cursor-pointer"
             onClick={() => handleProductClick(product)}
           >
-            <div className='flex justify-center bg-[var(--color-elementos-3)] rounded'>
+            <div className='flex w-full justify-center bg-[var(--color-elementos-3)] rounded-t'>
               <img 
-                className="object-cover w-full h-70 max-w-[275px]" 
+                className="object-cover w-full h-70 max-w-[275px] rounded-t" 
                 src={product.imageUrl} 
                 alt={product.name}
                 // style={{

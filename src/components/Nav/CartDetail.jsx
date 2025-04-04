@@ -15,7 +15,7 @@ export function CartDetail({ onClose }) {
 
   return (
     <div 
-      className="fixed inset-0 bg-black/50 flex justify-end z-50"
+      className="fixed inset-0 bg-black/50 flex justify-end z-50 "
       onClick={onClose}
     >
       <div 
