@@ -6,17 +6,17 @@ import { CartDetail } from './CartDetail'
 export function CartIcon() {
   const [isOpen, setIsOpen] = useState(false)
   const { cart } = useCart()
-  
+
+  const [animate, setAnimate] = useState(false)  
+  const [prevCount, setPrevCount] = useState(0)
+
   const itemCount = cart.reduce((total, item) => total + item.quantity, 0)
   
-  //##
   useEffect(() => {
     if (isOpen) {
-      // Add a new history entry when opening modal
       window.history.pushState({ modal: 'cart' }, '')
     }
 
-    // Handle back button
     const handlePopState = () => {
       setIsOpen(false)
     }
@@ -24,9 +24,20 @@ export function CartIcon() {
     window.addEventListener('popstate', handlePopState)
     return () => window.removeEventListener('popstate', handlePopState)
   }, [isOpen])
-  //##
+  
+  useEffect(() => {
+    // Only animate if cart is closed
+    if (itemCount > prevCount && !isOpen) {
+      setAnimate(true)
+      const timer = setTimeout(() => setAnimate(false), 500)
+      return () => clearTimeout(timer)
+    }
+    setPrevCount(itemCount)
+  }, [itemCount, prevCount, isOpen])
+
+
   return (
-    <li className="nav-item relative cursor-pointer">
+    <li className={`nav-item relative cursor-pointer ${animate ? 'cart-animation' : ''}`}>
       <div onClick={() => setIsOpen(!isOpen)}>
       <svg 
       fill="var(--color-white)"

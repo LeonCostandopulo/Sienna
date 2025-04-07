@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { ColorPicker } from './ColorPicker'
 import { SizePicker } from './SizePicker'
 import { useCart } from '../ProductsSection/useCart'//#
+import { colorMap } from '../../constantes'
 
 export function ProductDetail({ product, onClose }) {
   const numero = 5491130082379
@@ -27,6 +28,9 @@ export function ProductDetail({ product, onClose }) {
     return () => window.removeEventListener('popstate', handleBackButton)
   }, [])
   
+  // useEffect(() => {
+    
+  // }, [selectedColor, selectedSize])
   return (
     <div 
       className="fixed inset-0 bg-black/50 flex items-center justify-center"
@@ -34,29 +38,61 @@ export function ProductDetail({ product, onClose }) {
       onClick={onClose}
     >
       <article 
-        className="bg-[var(--color-elementos)] max-h-[90dvh] h-full relative rounded-lg max-w-[90dvw] md:max-w-4xl w-full mx-4 overflow-hidden"
+        className="flex flex-col bg-[var(--color-elementos)] max-h-[90dvh] h-full relative rounded-lg max-w-[90dvw] md:max-w-4xl w-full mx-4 overflow-hidden"
         style={{ zIndex: 101 }}
         onClick={e => e.stopPropagation()}
       >
-        <div className="flex gap-1 flex-col md:flex-row h-full items-center  overflow-hidden">
-          <img 
-            src={product.imageUrl} 
-            alt={product.name}
-            className=" rounded-t-lg max-h-[40dvh] w-full md:w-1/2 object-none"
-          />
+        <div className="flex gap-1 flex-col bg-[var(--color-elementos)] md:flex-row md:items-center h-full ">
+        <div className="buzo-container img-container bg-[var(--color-texto)] h-full max-h-[40dvh] md:max-h-full flex items-center justify-center overflow-clip rounded-t-lg md:rounded-r-lg md:rounded-l-none w-full md:w-1/2 object-none">
+          <div 
+            className='flex items-center justify-center w-fit h-fit rounded-lg '
+            style={{
+              transform: selectedSize ? `scale(${
+                selectedSize === 3 ? 1.4 :  //############################################
+                selectedSize === 2 ? 1.3 :
+                selectedSize === 1 ? 1.2 :
+                selectedSize === 'XL' ? 1.4 :
+                selectedSize === 'L' ? 1.3 :
+                selectedSize === 'M' ? 1.2 :
+                selectedSize === 'S' ? 1.1 : 1
+              })` : 'scale(1)',
 
-          <div className="flex flex-col md:gap-4">
-            <h2 className="text-3xl font-bold text-center">{product.name}</h2>
-            <p className="text-2xl font-bold text-center ">${product.price}</p>
+              backgroundColor: colorMap[selectedColor],
+              transition: 'all 0.3s ease-in-out'
+            }}
+          >
+            <img 
+              style={{
+                transform: selectedSize ? `scale(${
+                  selectedSize === 3 ? 1.4 :  //############################################
+                  selectedSize === 2 ? 1.3 :
+                  selectedSize === 1 ? 1.2 :
+                  selectedSize === 'XL' ? 1.4 :
+                  selectedSize === 'L' ? 1.3 :
+                  selectedSize === 'M' ? 1.2 :
+                  selectedSize === 'S' ? 1.1 : 1
+                })` : 'scale(1)',
+                transition: 'transform 0.3s ease-in-out'
+              }}
+              src={product.imageUrl} 
+              alt={product.name}
+              className="product-image mix-blend-screen w-full h-full object-contain    backdrop-brightness-50"
+            />
+          </div>
+        </div>
 
-          <div className="flex flex-1 px-10 md:flex-col">
+          <div className="flex flex-col md:gap-4 md:justify-center md:items-start w-full md:w-1/2 sm:p-5">
+            <h2 className="px-10 text-3xl font-bold text-center">{product.name}</h2>
+            <p className="px-10 text-2xl font-bold text-center ">${product.price}</p>
+
+          <div className="flex flex-1 px-10  md:flex-col">
             <p className="hidden md:block text-[var(--color-texto-2)] mb-4">{product.description}</p>
             
             <div className='flex flex-col gap-[1dvh]'>
               {/* Size Picker */}
               {product.size && product.size.length > 0 && (
                 <div className="block">
-                  <h3 className="font-bold mb-2">Talles:</h3>
+                  <h3 className="font-bold">Talles:</h3>
                   <SizePicker 
                     sizes={product.size}
                     selectedSize={selectedSize}
@@ -73,7 +109,7 @@ export function ProductDetail({ product, onClose }) {
               {/* Color Picker */}
               {product.color && product.color.length > 0 && (
                 <div className="flex-1 justify-center">
-                  <h3 className="font-bold ml-1">Colores:</h3>
+                  <h3 className="font-bold">Colores:</h3>
                   <ColorPicker 
                     colors={product.color}
                     selectedColor={selectedColor}
@@ -90,7 +126,7 @@ export function ProductDetail({ product, onClose }) {
 
             <button 
                 onClick={onClose}
-                className="close-button px-6 py-2 rounded-lg hover:opacity-60 absolute top-0 right-[-.5rem]"
+                className="close-button text-[var(--color-elementos-2)] md:text-[var(--color-texto)] px-6 py-2 rounded-lg hover:opacity-60 absolute top-0 right-[-.5rem]"
               >
                 ✕
               </button>

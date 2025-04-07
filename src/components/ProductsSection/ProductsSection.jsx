@@ -44,9 +44,9 @@ export function ProductsSection() {
             className="max-w-[410px] filter-shadow bg-[var(--color-elementos)] rounded shadow-sm cursor-pointer"
             onClick={() => handleProductClick(product)}
           >
-            <div className='flex w-full justify-center bg-[var(--color-elementos-3)] rounded-t'>
+            <div className='flex w-full overflow-clip justify-center bg-[var(--color-texto)] rounded-t'>
               <img 
-                className="object-cover w-full h-70 max-w-[275px] rounded-t" 
+                className="object-cover scale-150 w-full h-70 max-w-[275px] rounded-t hover:scale-130 transition-transform duration-500 ease-in-out" 
                 src={product.imageUrl} 
                 alt={product.name}
                 // style={{
@@ -64,7 +64,7 @@ export function ProductsSection() {
                 {product.name}
               </h5>
               <p className="mb-3 font-normal text-[var(--color-texto-2)]">
-                {product.description}
+                ${product.price}
               </p>
               <div className="flex items-center gap-2">
                 <a onClick={(e)=> e.stopPropagation()} href={`https://wa.me/${numero}?text=${encodeURIComponent(`${mensaje}"${product.name}".`)}`} className="inline-flex items-center ml-auto px-3 py-2 text-sm font-medium text-center text-white bg-[var(--color-elementos-2)] border-2 border-[var(--color-elementos-2)] rounded-lg hover:opacity-60 focus:outline-none">
