@@ -2,7 +2,8 @@ import { useState, useEffect } from 'react'
 import { ColorPicker } from './ColorPicker'
 import { SizePicker } from './SizePicker'
 import { useCart } from '../ProductsSection/useCart'//#
-import remeraOversize from '/src/assets/products/remera-oversize-Lila.webp'
+
+
 
 export function ProductDetail({ product, onClose }) {
   const numero = 5491130082379
@@ -55,7 +56,7 @@ export function ProductDetail({ product, onClose }) {
                   transition: 'transform 0.3s ease-in-out, scale 0.3s ease-in-out',
                   scale: selectedColor === 'Negro' ? '' : '0.7  ',
                 }}
-                src={remeraOversize}
+                src='/src/assets/products/remera-oversize-Lila.webp'
                 alt={product.name}
                 className="product-image scale-120  w-full h-full object-contain"
               />
