@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react'
 import { ColorPicker } from './ColorPicker'
 import { SizePicker } from './SizePicker'
 import { useCart } from '../ProductsSection/useCart'//#
-import { colorMap } from '../../constantes'
 
 export function ProductDetail({ product, onClose }) {
   const numero = 5491130082379
@@ -27,10 +26,15 @@ export function ProductDetail({ product, onClose }) {
     window.addEventListener('popstate', handleBackButton)
     return () => window.removeEventListener('popstate', handleBackButton)
   }, [])
-  
-  // useEffect(() => {
-    
-  // }, [selectedColor, selectedSize])
+
+  useEffect(() => {
+    // Precarga las imágenes de las variantes
+    product.color?.forEach(color => {
+      const img = new Image();
+      img.src = product.imageUrl.replace('-negro.webp', `-${color.toLowerCase()}.webp`);
+    });
+  }, [product]);
+
   return (
     <div 
       className="fixed inset-0 bg-black/50 flex items-center justify-center"
@@ -44,24 +48,31 @@ export function ProductDetail({ product, onClose }) {
       >
         <div className="flex gap-1 flex-col bg-[var(--color-elementos)] md:flex-row md:items-center h-full ">
           <div className="relative img-container bg-[var(--color-texto)] h-full max-h-[40dvh] md:max-h-full flex items-center justify-center overflow-hidden rounded-t-lg md:rounded-r-lg md:rounded-l-none w-full md:w-1/2 object-none">
-              <img 
-                style={{
-                  transform: selectedSize ? `scale(${
-                    selectedSize === 3 ? 1.4 :  //############################################
-                    selectedSize === 2 ? 1.3 :
-                    selectedSize === 1 ? 1.2 :
-                    selectedSize === 'XL' ? 1.4 :
-                    selectedSize === 'L' ? 1.3 :
-                    selectedSize === 'M' ? 1.2 :
-                    selectedSize === 'S' ? 1.1 : 1
-                  })` : 'scale(1)',
-                  transition: 'transform 0.3s ease-in-out',
-                  scale: selectedColor === 'Negro' ? '' : '0.7  ',
-                }}
-                src={selectedColor !== 'Negro' ? product.imageUrl.replace(".webp", `-${selectedColor}.webp`) : product.imageUrl}
-                alt={product.name}
-                className="product-image scale-120  w-full h-full object-contain"
-              />
+            <img 
+              style={{
+                transform: selectedSize ? `scale(${
+                  selectedSize === 3 ? 1.4 :
+                  selectedSize === 2 ? 1.3 :
+                  selectedSize === 1 ? 1.2 :
+                  selectedSize === 'XL' ? 1.4 :
+                  selectedSize === 'L' ? 1.3 :
+                  selectedSize === 'M' ? 1.2 :
+                  selectedSize === 'S' ? 1.1 : 1
+                })` : 'scale(1)',
+                transition: 'transform 0.3s ease-in-out, scale 0.5s ease-in-out',
+                scale: selectedColor === 'Negro' ? '1.4' : '0.7  ',
+              }}
+              src={selectedColor 
+                ? product.imageUrl.replace('-negro.webp', `-${selectedColor.toLowerCase()}.webp`)
+                : product.imageUrl
+              }
+              alt={product.name}
+              className="product-image w-full h-full object-contain self-center"
+              onError={(e) => {
+                e.target.onerror = null;
+                e.target.src = product.imageUrl; // Fallback a imagen original si la variante no existe
+              }}
+            />
               
           </div>
 

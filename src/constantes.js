@@ -1,9 +1,9 @@
-import remeraOversize   from './assets/products/remera-oversize.webp'
-import bermuda          from './assets/products/bermuda.webp'
-import short            from './assets/products/short.webp'
-import chomba           from './assets/products/chomba.webp'
-import buzoOversize     from './assets/products/buzo-oversize-1.webp'
-import buzoOversize2    from './assets/products/buzo-oversize-2.webp'
+import remeraOversize   from './assets/products/remera-oversize-negro.webp'
+import bermuda          from './assets/products/bermuda-negro.webp'
+import short            from './assets/products/short-negro.webp'
+import chomba           from './assets/products/chomba-negro.webp'
+import buzoOversize     from './assets/products/buzo-oversize-1-negro.webp'
+import buzoOversize2    from './assets/products/buzo-oversize-2-negro.webp'
 
 
 export const products = [
