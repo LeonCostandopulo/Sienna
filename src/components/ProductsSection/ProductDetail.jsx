@@ -46,7 +46,7 @@ export function ProductDetail({ product, onClose }) {
                 style={{
                   transform: selectedSize ? `scale(${
                     selectedSize === 3 ? 1.4 :  
-                    selectedSize === 2 ? 1.4 : //!!!!
+                    selectedSize === 2 ? 1.3 : //!!!!
                     selectedSize === 1 ? 1.2 :
                     selectedSize === 'XL' ? 1.4 :
                     selectedSize === 'L' ? 1.3 :
@@ -56,6 +56,7 @@ export function ProductDetail({ product, onClose }) {
                   transition: 'transform 0.3s ease-in-out, scale 0.3s ease-in-out',
                   scale: selectedColor === 'Negro' ? '' : '0.7  ',
                 }}
+                key={selectedColor} //la key fuerza el re render del component
                 src={selectedColor === 'Negro' ? product.imageUrl : product.imageUrl.replace('-negro.webp', `-${selectedColor}.webp`)}
                 alt={product.name}
                 className="product-image scale-120  w-full h-full object-contain"
