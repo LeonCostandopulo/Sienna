@@ -56,7 +56,7 @@ export function ProductDetail({ product, onClose }) {
                   transition: 'transform 0.3s ease-in-out, scale 0.3s ease-in-out',
                   scale: selectedColor === 'Negro' ? '' : '0.7  ',
                 }}
-                src='/src/assets/products/remera-oversize-Lila.webp'
+                src={selectedColor === 'Negro' ? product.imageUrl : product.imageUrl.replace('-negro.webp', `-${selectedColor}.webp`)}
                 alt={product.name}
                 className="product-image scale-120  w-full h-full object-contain"
               />
