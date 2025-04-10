@@ -48,3 +48,6 @@ body {
 .category{
   filter: drop-shadow(0 0 7px #0007 );
 }
+.nav-logo{
+  font-family:Times, serif;
+}

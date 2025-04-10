@@ -10,7 +10,6 @@ export function NavList() {
     if (isMenuOpen) {
       window.history.pushState({ menu: 'nav' }, '')
 
-      // Add click listener to handle clicks outside NavLeft
       const handleClickOutside = (e) => {
         const navLeft = document.getElementById('nav-left')
         if (navLeft && !navLeft.contains(e.target) && !e.target.closest('.nav-left-button')) {
@@ -26,7 +25,7 @@ export function NavList() {
   }, [isMenuOpen])
 
   function handleClick(e) {
-    e.stopPropagation() // Prevent click from bubbling
+    e.stopPropagation() 
     setIsMenuOpen(!isMenuOpen)
   }
 
@@ -69,7 +68,7 @@ export function NavList() {
 
       <li className="nav-logo filter-shadow w-fit m-auto text-2xl absolute right-0 left-0 text-center cursor-pointer">
         <a href="https://www.instagram.com/sienna.jma?" target='_blank'>
-          Sienna
+          S I E N N A
         </a>
       </li>
 
