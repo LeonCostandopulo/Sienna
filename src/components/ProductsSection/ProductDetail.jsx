@@ -43,8 +43,8 @@ export function ProductDetail({ product, onClose }) {
               <img 
                 style={{
                   transform: selectedSize ? `scale(${
-                    selectedSize === 3 ? 1.4 :  //############################################
-                    selectedSize === 2 ? 1.3 :
+                    selectedSize === 3 ? 1.4 :  
+                    selectedSize === 2 ? 1.4 : //!!!!
                     selectedSize === 1 ? 1.2 :
                     selectedSize === 'XL' ? 1.4 :
                     selectedSize === 'L' ? 1.3 :
