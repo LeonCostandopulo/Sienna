@@ -44,7 +44,7 @@ export function ProductDetail({ product, onClose }) {
                 style={{
                   transform: selectedSize ? `scale(${
                     selectedSize === 3 ? 1.4 :  
-                    selectedSize === 2 ? 1.3 : //!!!!
+                    selectedSize === 2 ? 1.4 : //!!!!
                     selectedSize === 1 ? 1.2 :
                     selectedSize === 'XL' ? 1.4 :
                     selectedSize === 'L' ? 1.3 :
@@ -54,7 +54,7 @@ export function ProductDetail({ product, onClose }) {
                   transition: 'transform 0.3s ease-in-out, scale 0.3s ease-in-out',
                   scale: selectedColor === 'Negro' ? '' : '0.7  ',
                 }}
-                src={'./assets/products/remera-oversize-blanco.webp'}
+                src={'/assets/products/remera-oversize-blanco.webp'}
                 alt={product.name}
                 className="product-image scale-120  w-full h-full object-contain"
               />
