@@ -43,43 +43,27 @@ export function ProductDetail({ product, onClose }) {
         onClick={e => e.stopPropagation()}
       >
         <div className="flex gap-1 flex-col bg-[var(--color-elementos)] md:flex-row md:items-center h-full ">
-        <div className="buzo-container img-container bg-[var(--color-texto)] h-full max-h-[40dvh] md:max-h-full flex items-center justify-center overflow-clip rounded-t-lg md:rounded-r-lg md:rounded-l-none w-full md:w-1/2 object-none">
-          <div 
-            className='flex items-center justify-center w-fit h-fit rounded-lg '
-            style={{
-              transform: selectedSize ? `scale(${
-                selectedSize === 3 ? 1.4 :  //############################################
-                selectedSize === 2 ? 1.3 :
-                selectedSize === 1 ? 1.2 :
-                selectedSize === 'XL' ? 1.4 :
-                selectedSize === 'L' ? 1.3 :
-                selectedSize === 'M' ? 1.2 :
-                selectedSize === 'S' ? 1.1 : 1
-              })` : 'scale(1)',
-
-              backgroundColor: colorMap[selectedColor],
-              transition: 'all 0.3s ease-in-out'
-            }}
-          >
-            <img 
-              style={{
-                transform: selectedSize ? `scale(${
-                  selectedSize === 3 ? 1.4 :  //############################################
-                  selectedSize === 2 ? 1.3 :
-                  selectedSize === 1 ? 1.2 :
-                  selectedSize === 'XL' ? 1.4 :
-                  selectedSize === 'L' ? 1.3 :
-                  selectedSize === 'M' ? 1.2 :
-                  selectedSize === 'S' ? 1.1 : 1
-                })` : 'scale(1)',
-                transition: 'transform 0.3s ease-in-out'
-              }}
-              src={product.imageUrl} 
-              alt={product.name}
-              className="product-image mix-blend-screen w-full h-full object-contain    backdrop-brightness-50"
-            />
+          <div className="relative img-container bg-[var(--color-texto)] h-full max-h-[40dvh] md:max-h-full flex items-center justify-center overflow-hidden rounded-t-lg md:rounded-r-lg md:rounded-l-none w-full md:w-1/2 object-none">
+              <img 
+                style={{
+                  transform: selectedSize ? `scale(${
+                    selectedSize === 3 ? 1.4 :  //############################################
+                    selectedSize === 2 ? 1.3 :
+                    selectedSize === 1 ? 1.2 :
+                    selectedSize === 'XL' ? 1.4 :
+                    selectedSize === 'L' ? 1.3 :
+                    selectedSize === 'M' ? 1.2 :
+                    selectedSize === 'S' ? 1.1 : 1
+                  })` : 'scale(1)',
+                  transition: 'transform 0.3s ease-in-out',
+                  scale: selectedColor === 'Negro' ? '' : '0.7  ',
+                }}
+                src={selectedColor !== 'Negro' ? product.imageUrl.replace(".webp", `-${selectedColor}.webp`) : product.imageUrl}
+                alt={product.name}
+                className="product-image scale-120  w-full h-full object-contain"
+              />
+              
           </div>
-        </div>
 
           <div className="flex flex-col md:gap-4 md:justify-center md:items-start w-full md:w-1/2 sm:p-5">
             <h2 className="px-10 text-3xl font-bold text-center">{product.name}</h2>

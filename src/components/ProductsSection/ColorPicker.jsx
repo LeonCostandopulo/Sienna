@@ -10,7 +10,7 @@ export function ColorPicker({ colors, selectedColor, onColorSelect }) {
           key={color}
           onClick={() => onColorSelect(color)}
           className={`
-            w-6 h-6 rounded-full border-2 transition-all
+            w-6 h-6 rounded-full border-1 transition-all p-2 filter-shadow
             ${selectedColor === color 
               ? 'border-white scale-110' 
               : 'border-transparent hover:scale-105'
