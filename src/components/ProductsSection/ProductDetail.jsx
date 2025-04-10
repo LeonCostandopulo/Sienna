@@ -40,6 +40,26 @@ export function ProductDetail({ product, onClose }) {
     console.log('Selected color:', selectedColor)
     console.log('Attempting to load:', product.imageUrl.replace('-negro.webp', `-${selectedColor.toLowerCase()}.webp`))
   }, [selectedColor, product.imageUrl])
+
+  function buildImageUrl(baseUrl, color) {
+    try {
+      // Si es una URL base64, retornamos la URL original
+      if (baseUrl.startsWith('data:image')) {
+        return baseUrl;
+      }
+  
+      // Si es una URL normal, aplicamos el reemplazo
+      if (color && color !== 'Negro') {
+        const basePath = baseUrl.substring(0, baseUrl.lastIndexOf('-negro.webp'));
+        return `${basePath}-${color.toLowerCase()}.webp`;
+      }
+  
+      return baseUrl;
+    } catch (error) {
+      console.error('Error building image URL:', error);
+      return baseUrl;
+    }
+  }
   
   return (
     <div 
@@ -68,16 +88,7 @@ export function ProductDetail({ product, onClose }) {
                 transition: 'transform 0.3s ease-in-out, scale 0.5s ease-in-out',
                 scale: selectedColor === 'Negro' ? '1.4' : '0.7  ',
               }}
-              src={(() => {
-                // Construimos la nueva URL basándonos en la URL original
-                const baseUrl = product.imageUrl
-                if (!selectedColor || selectedColor === 'negro') return baseUrl
-                
-                // Extraemos el path base (sin la extensión)
-                const basePath = baseUrl.substring(0, baseUrl.lastIndexOf('-negro.webp'))
-                // Construimos la nueva URL con el color seleccionado
-                return `${basePath}-${selectedColor.toLowerCase()}.webp`
-              })()}
+              src={buildImageUrl(product.imageUrl, selectedColor)}
               alt={product.name}
               className="product-image w-full h-full object-contain self-center"
               onError={(e) => {
