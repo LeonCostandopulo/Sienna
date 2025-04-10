@@ -8,7 +8,7 @@ export function ProductDetail({ product, onClose }) {
   const mensaje = 'Hola! Vengo de la página web de Sienna. Quiero comprar: \n'
   
   const { addToCart } = useCart() //#
-  const [selectedColor, setSelectedColor] = useState(product.color?.[0] || null)
+  const [selectedColor, setSelectedColor] = useState('Negro')
   const [selectedSize, setSelectedSize] = useState(product.size?.[0] || null)
 
   const handleAddToCart = () => { //#
@@ -34,7 +34,13 @@ export function ProductDetail({ product, onClose }) {
       img.src = product.imageUrl.replace('-negro.webp', `-${color.toLowerCase()}.webp`);
     });
   }, [product]);
-
+  
+  useEffect(() => {
+    console.log('Current image URL:', product.imageUrl)
+    console.log('Selected color:', selectedColor)
+    console.log('Attempting to load:', product.imageUrl.replace('-negro.webp', `-${selectedColor.toLowerCase()}.webp`))
+  }, [selectedColor, product.imageUrl])
+  
   return (
     <div 
       className="fixed inset-0 bg-black/50 flex items-center justify-center"
@@ -62,10 +68,16 @@ export function ProductDetail({ product, onClose }) {
                 transition: 'transform 0.3s ease-in-out, scale 0.5s ease-in-out',
                 scale: selectedColor === 'Negro' ? '1.4' : '0.7  ',
               }}
-              src={selectedColor 
-                ? product.imageUrl.replace('-negro.webp', `-${selectedColor.toLowerCase()}.webp`)
-                : product.imageUrl
-              }
+              src={(() => {
+                // Construimos la nueva URL basándonos en la URL original
+                const baseUrl = product.imageUrl
+                if (!selectedColor || selectedColor === 'negro') return baseUrl
+                
+                // Extraemos el path base (sin la extensión)
+                const basePath = baseUrl.substring(0, baseUrl.lastIndexOf('-negro.webp'))
+                // Construimos la nueva URL con el color seleccionado
+                return `${basePath}-${selectedColor.toLowerCase()}.webp`
+              })()}
               alt={product.name}
               className="product-image w-full h-full object-contain self-center"
               onError={(e) => {
