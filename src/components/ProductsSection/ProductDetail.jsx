@@ -8,7 +8,7 @@ export function ProductDetail({ product, onClose }) {
   const mensaje = 'Hola! Vengo de la página web de Sienna. Quiero comprar: \n'
   
   const { addToCart } = useCart() //#
-  const [selectedColor, setSelectedColor] = useState('Negro')
+  const [selectedColor, setSelectedColor] = useState(product.color?.[0] || null)
   const [selectedSize, setSelectedSize] = useState(product.size?.[0] || null)
 
   const handleAddToCart = () => { //#
@@ -26,39 +26,6 @@ export function ProductDetail({ product, onClose }) {
     window.addEventListener('popstate', handleBackButton)
     return () => window.removeEventListener('popstate', handleBackButton)
   }, [])
-
-  useEffect(() => {
-    // Precarga las imágenes de las variantes
-    product.color?.forEach(color => {
-      const img = new Image();
-      img.src = product.imageUrl.replace('-negro.webp', `-${color.toLowerCase()}.webp`);
-    });
-  }, [product]);
-  
-  useEffect(() => {
-    console.log('Current image URL:', product.imageUrl)
-    console.log('Selected color:', selectedColor)
-    console.log('Attempting to load:', product.imageUrl.replace('-negro.webp', `-${selectedColor.toLowerCase()}.webp`))
-  }, [selectedColor, product.imageUrl])
-
-  function buildImageUrl(baseUrl, color) {
-    try {
-      if (baseUrl.startsWith('data:image') || !color) {
-        return baseUrl;
-      }
-  
-      const productImages = {
-        'Negro': baseUrl,
-        'Blanco': `src/assets/products/${product.name.toLowerCase()}-blanco.webp`,
-        'Rojo': `src/assets/products/${product.name.toLowerCase()}-rojo.webp`,
-      };
-  
-      return productImages[color] || baseUrl;
-    } catch (error) {
-      console.error('Error building image URL:', error);
-      return baseUrl;
-    }
-  }
   
   return (
     <div 
@@ -73,28 +40,24 @@ export function ProductDetail({ product, onClose }) {
       >
         <div className="flex gap-1 flex-col bg-[var(--color-elementos)] md:flex-row md:items-center h-full ">
           <div className="relative img-container bg-[var(--color-texto)] h-full max-h-[40dvh] md:max-h-full flex items-center justify-center overflow-hidden rounded-t-lg md:rounded-r-lg md:rounded-l-none w-full md:w-1/2 object-none">
-            <img 
-              style={{
-                transform: selectedSize ? `scale(${
-                  selectedSize === 3 ? 1.4 :
-                  selectedSize === 2 ? 1.3 :
-                  selectedSize === 1 ? 1.2 :
-                  selectedSize === 'XL' ? 1.4 :
-                  selectedSize === 'L' ? 1.3 :
-                  selectedSize === 'M' ? 1.2 :
-                  selectedSize === 'S' ? 1.1 : 1
-                })` : 'scale(1)',
-                transition: 'transform 0.3s ease-in-out, scale 0.5s ease-in-out',
-                scale: selectedColor === 'Negro' ? '1.4' : '0.7  ',
-              }}
-              src={buildImageUrl(product.imageUrl, selectedColor)}
-              alt={product.name}
-              className="product-image w-full h-full object-contain self-center"
-              onError={(e) => {
-                e.target.onerror = null;
-                e.target.src = product.imageUrl; // Fallback a imagen original si la variante no existe
-              }}
-            />
+              <img 
+                style={{
+                  transform: selectedSize ? `scale(${
+                    selectedSize === 3 ? 1.4 :  //############################################
+                    selectedSize === 2 ? 1.3 :
+                    selectedSize === 1 ? 1.2 :
+                    selectedSize === 'XL' ? 1.4 :
+                    selectedSize === 'L' ? 1.3 :
+                    selectedSize === 'M' ? 1.2 :
+                    selectedSize === 'S' ? 1.1 : 1
+                  })` : 'scale(1)',
+                  transition: 'transform 0.3s ease-in-out, scale 0.3s ease-in-out',
+                  scale: selectedColor === 'Negro' ? '' : '0.7  ',
+                }}
+                src={selectedColor !== 'Negro' ? '' + product.imageUrl.replace("-negro.webp", `-${selectedColor}.webp`) : product.imageUrl}
+                alt={product.name}
+                className="product-image scale-120  w-full h-full object-contain"
+              />
               
           </div>
 
