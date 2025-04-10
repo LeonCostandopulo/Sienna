@@ -49,8 +49,8 @@ export function ProductDetail({ product, onClose }) {
   
       const productImages = {
         'Negro': baseUrl,
-        'Blanco': `/assets/products/${product.name.toLowerCase()}-blanco.webp`,
-        'Rojo': `/assets/products/${product.name.toLowerCase()}-rojo.webp`,
+        'Blanco': `src/assets/products/${product.name.toLowerCase()}-blanco.webp`,
+        'Rojo': `src/assets/products/${product.name.toLowerCase()}-rojo.webp`,
       };
   
       return productImages[color] || baseUrl;
