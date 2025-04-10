@@ -43,18 +43,17 @@ export function ProductDetail({ product, onClose }) {
 
   function buildImageUrl(baseUrl, color) {
     try {
-      // Si es una URL base64, retornamos la URL original
-      if (baseUrl.startsWith('data:image')) {
+      if (baseUrl.startsWith('data:image') || !color) {
         return baseUrl;
       }
   
-      // Si es una URL normal, aplicamos el reemplazo
-      if (color && color !== 'Negro') {
-        const basePath = baseUrl.substring(0, baseUrl.lastIndexOf('-negro.webp'));
-        return `${basePath}-${color.toLowerCase()}.webp`;
-      }
+      const productImages = {
+        'Negro': baseUrl,
+        'Blanco': `/assets/products/${product.name.toLowerCase()}-blanco.webp`,
+        'Rojo': `/assets/products/${product.name.toLowerCase()}-rojo.webp`,
+      };
   
-      return baseUrl;
+      return productImages[color] || baseUrl;
     } catch (error) {
       console.error('Error building image URL:', error);
       return baseUrl;
